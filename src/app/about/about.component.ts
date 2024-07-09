@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { fromEvent, interval, timer } from 'rxjs';
 
 @Component({
   selector: 'about',
@@ -11,27 +12,21 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
 
+    // interval rxjs
+    // Creates an Observable that emits sequential numbers every specified interval of time, on a specified SchedulerLike.
+    // const interval$ = interval(1000);
+    // interval$.subscribe(value => console.log("stream 1  " + value));
+    // interval$.subscribe(value => console.log("stream 2  " + value));
 
-    //browser callback api
-    //user interactions with async events combined streams
-    //examples of callback api to generate streams of data
 
-    document.addEventListener('click', event => {
-      console.log(event);
+    // timer rxjs
+    const timer$ = timer(3000, 1000 );
+    timer$.subscribe(value => console.log("stream 1 " + value));
 
-      setTimeout(() =>{
+    const click$ = fromEvent(document, 'click');
 
-        console.log("finished");
-        
-        let counter = 0;
+    click$.subscribe(event => console.log(event));
 
-        setInterval(() => {
-          console.log(counter);
-          counter++;
-        }, 1000);
-
-      }, 3000);
-    });
 
 
   }
