@@ -23,8 +23,8 @@ export class AboutComponent implements OnInit {
     const timer$ = timer(3000, 1000 );
     timer$.subscribe(value => console.log("stream 1 " + value));
 
+    // fromEvent returns Observable<Event> from browser
     const click$ = fromEvent(document, 'click');
-
     click$.subscribe(event => console.log(event));
 
 
