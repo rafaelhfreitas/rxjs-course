@@ -14,6 +14,7 @@ export class AboutComponent implements OnInit {
 
     //browser callback api
     //user interactions with async events combined streams
+    //examples of callback api to generate streams of data
 
     document.addEventListener('click', event => {
       console.log(event);
