@@ -21,9 +21,13 @@ export class HomeComponent implements OnInit {
 
         const courses$: Observable<Course[]> = http$
         .pipe(
-            map(res => Object.values<Course>(res["payload"]))
+            tap(() => console.log('HTTP request executed')),
+            map(res => Object.values<Course>(res["payload"])),
+            shareReplay()
         )
 
+
+        courses$.subscribe();
 
         this.beginnerCourses$ = courses$
             .pipe(
