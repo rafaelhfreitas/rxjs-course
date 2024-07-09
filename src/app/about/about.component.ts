@@ -13,13 +13,12 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-      const interval$ = interval(1000);
-      const interval2$ = interval$.pipe(map(val => 10 * val));
+      const interval1$ = interval(1000);
 
-      const result$ = merge(interval$, interval2$);
+      const sub = interval1$.subscribe(console.log);
 
 
-      result$.subscribe(console.log)
+      setTimeout( () => sub.unsubscribe(), 5000)
       
 
   }
