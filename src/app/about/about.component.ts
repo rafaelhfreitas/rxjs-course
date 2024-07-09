@@ -20,12 +20,25 @@ export class AboutComponent implements OnInit {
 
 
     // timer rxjs
-    const timer$ = timer(3000, 1000 );
-    timer$.subscribe(value => console.log("stream 1 " + value));
+    const timer$ = timer(3000, 1000);
+    const sub = timer$.subscribe(value => console.log("stream 1 " + value));
+
+    setTimeout(() => {
+      sub.unsubscribe();
+    }, 5000)
+
+
+
+
 
     // fromEvent returns Observable<Event> from browser
     const click$ = fromEvent(document, 'click');
-    click$.subscribe(event => console.log(event));
+    click$.subscribe(
+      event => console.log(event),
+      error => console.log(error),
+      () => console.log("completed")
+    );
+
 
 
 
