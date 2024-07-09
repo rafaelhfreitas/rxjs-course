@@ -30,7 +30,7 @@ export class CourseComponent implements OnInit, AfterViewInit {
     lessons$: Observable<Lesson[]>;
 
 
-    @ViewChild('searchInput', { static: true }) input: ElementRef;
+    @ViewChild('searchInput', { static: true, read: ElementRef }) input: ElementRef;
 
     constructor(private route: ActivatedRoute) {
 
@@ -53,6 +53,14 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
 
+
+        fromEvent<any>(this.input.nativeElement, 'keyup')
+            .pipe(
+                map(event => event.target.value),
+                debounceTime(400),
+                distinctUntilChanged()
+            )
+            .subscribe(console.log);
 
 
 
