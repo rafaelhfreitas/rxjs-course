@@ -25,7 +25,7 @@ export class CourseDialogComponent implements AfterViewInit {
     constructor(
         private fb: FormBuilder,
         private dialogRef: MatDialogRef<CourseDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) course:Course ) {
+        @Inject(MAT_DIALOG_DATA) course: Course) {
 
         this.course = course;
 
@@ -33,7 +33,7 @@ export class CourseDialogComponent implements AfterViewInit {
             description: [course.description, Validators.required],
             category: [course.category, Validators.required],
             releasedAt: [moment(), Validators.required],
-            longDescription: [course.longDescription,Validators.required]
+            longDescription: [course.longDescription, Validators.required]
         });
 
     }
@@ -55,3 +55,5 @@ export class CourseDialogComponent implements AfterViewInit {
 
   }
 }
+
+
