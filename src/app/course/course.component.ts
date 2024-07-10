@@ -32,7 +32,6 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
     lessons$: Observable<Lesson[]>;
 
-    courseId: string;
 
     @ViewChild('searchInput', { static: true }) input: ElementRef;
 
